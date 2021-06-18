@@ -100,7 +100,10 @@ function signOut() {
   alert('You are successfully logged out!')
   
   document.querySelectorAll('section').forEach(section => {
-    if(section.id == 'myprofile'){
+    if(section.id == 'my-profile'){
+      document.querySelector('#profile-picture').src = ''
+      document.querySelector('#user-name').innerText = ''
+      document.querySelector('#user-email').innerText = ''
       section.style.display = 'none'
     }
     else {

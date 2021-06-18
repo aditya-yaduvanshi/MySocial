@@ -12,15 +12,17 @@ function menu_btn(){
   }
 }
 
-function RedirectToProfile(pictureUrl,name,email){
+function RedirectToProfile(pictureUrl,name,email,logout){
   const profileSection = document.querySelector('#my-profile'),
   profilePicture = document.querySelector('#profile-picture'),
   userName = document.querySelector('#user-name'),
-  userEmail = document.querySelector('#user-email')
+  userEmail = document.querySelector('#user-email'),
+  signout = document.querySelector('#signout')
 
   profilePicture.src = pictureUrl
   userName.innerText = name
   userEmail.innerText = email
+  signout.onclick = logout
 
   document.querySelectorAll('section').forEach(section => {
     section.style.display = 'none'
@@ -51,23 +53,33 @@ window.fbAsyncInit = function() {
 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
-    FbLoginSuccess(response);
+    if(response.status === 'connected'){
+      FbLoginSuccess();
+    }
+    else {
+      FB.login((response)=>{
+        checkLoginState()
+      }, {scope: 'public_profile, email, name, picture'})
+    }
   });
 }
 
-function FbLoginSuccess(response){
-  if(response.status === 'connected'){
-    console.log(response)
-  }
+function FbLoginSuccess(){
+  FB.api('/me?fields=name,email,picture', function(response){
+    console.log("Email : " + response.email)
+    console.log("Name : " + response.name)
+    console.log("Picture : " + response.picture)
+
+    RedirectToProfile(response.picture, response.name, response.email, logOut)
+
+  })
 }
 
-var finished_rendering = function() {
-  console.log("finished rendering plugins");
-  var spinner = document.getElementById("spinner");
-  spinner.removeAttribute("style");
-  spinner.removeChild(spinner.childNodes[0]);
+function logOut(){
+  FB.logout()
+  console.log('User signed out.');
+  RemoveProfile()
 }
-FB.Event.subscribe('xfbml.render', finished_rendering);
 
 /* 
 Response by getLoginStatus
@@ -88,7 +100,7 @@ function onSignIn(googleUser) {
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-  RedirectToProfile(profile.getImageUrl(),profile.getName(),profile.getEmail());
+  RedirectToProfile(profile.getImageUrl(),profile.getName(),profile.getEmail(),signOut);
 }
 
 function signOut() {
@@ -96,14 +108,17 @@ function signOut() {
   auth2.signOut().then(function () {
     console.log('User signed out.');
   });
+  RemoveProfile()
+}
 
+function RemoveProfile(){
   alert('You are successfully logged out!')
-  
   document.querySelectorAll('section').forEach(section => {
     if(section.id == 'my-profile'){
       document.querySelector('#profile-picture').src = ''
       document.querySelector('#user-name').innerText = ''
       document.querySelector('#user-email').innerText = ''
+      document.querySelector('#signout').onclick = ''
       section.style.display = 'none'
     }
     else {

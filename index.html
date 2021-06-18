@@ -34,13 +34,7 @@
           <a class="nav-link" href="#contact">Contact</a>
         </li>
         <li class="nav-item" id="nav-login">
-          <a class="nav-link" href="#login">Login</a>
-        </li>
-        <li class="nav-item" id="nav-register">
-          <a class="nav-link" href="#register">Register</a>
-        </li>
-        <li class="nav-item" id="nav-logout">
-          <a href="#" class="nav-link" onclick="LogoutUser();">Logout</a>
+          <a class="nav-link" href="#social-login">Login</a>
         </li>
       </ul>
     </nav>
@@ -59,6 +53,7 @@
         <p>Task - #3 Social Network Integration</p>
       </div>
     </section>
+
     <section id="my-profile" data-section="user" style="display:none;">
       <h2>My Profile</h2>
       <div id="user-profile">
@@ -67,105 +62,66 @@
         <p id="user-email"></p>
       </div>
     </section>
-    <section id="login" data-section="login">
-      <h2>Login</h2>
-      <div id="login-form">
-        <form method="GET">
-          <div class="form-input">
-            <input type="email" name="login-email" id="login-email" placeholder="Enter The Email" required>
-          </div>
-          <div class="form-input">
-            <input type="password" name="login-password" id="login-password" placeholder="Enter The Password" required>
-          </div>
-          <div class="form-input" id="login-submit">
-            <input type="submit" value="Login">
-          </div>
-          <div class="form-input">
-            New ? Create an account <a href="#register" id="register-link"> Register </a>
-          </div>
-          <div>---------- OR ----------</div>
-          <!--<div class="login-btn form-input" id="fb-login">
-            <a href="#">Continue with Facebook</a>
-          </div>-->
-          <div id="spinner" style="
-            background: #4267b2;
-            border-radius: 5px;
-            color: white;
-            height: 40px;
-            text-align: center;
-            width: 250px;">Loading
-            <div class="fb-login-button form-input" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email" data-onlogin="checkLoginState()"></div>
-          </div>
-          <!--<div class="login-btn form-input" id="g-login">
-            <a href="#">Continue with Google</a>
-          </div>-->
-          <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
-        </form>
+
+    <section id="social-login">
+      <div>
+        <div id="spinner" style="
+          background: #4267b2;
+          border-radius: 5px;
+          color: white;
+          height: 40px;
+          text-align: center;
+          width: 250px;">Loading
+          <div class="fb-login-button form-input" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email" data-onlogin="checkLoginState"></div>
+        </div>
+        <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
+        <div><a href="#home" onclick="signOut()">Sign Out</a></div>
       </div>
     </section>
-    <section id="register" data-section="register">
-      <h2>Register</h2>
-      <div id="register-form">
-        <form method="POST" action="#">
-          <div class="form-input">
-            <input type="username" name="username" id="username" placeholder="Enter The Username" required>
-          </div>
-          <div class="form-input">
-            <input type="email" name="email" id="email" placeholder="Enter The Email" required>
-          </div>
-          <div class="form-input">
-            <input type="password" name="password" id="password" placeholder="Enter The Password" required>
-          </div>
-          <div class="form-input">
-            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm The Password" required>
-          </div>
-          <div class="form-input" id="register-submit">
-            <input type="submit" value="Register">
-          </div>
-          <div class="form-input">
-            Already have an account ? <a href="#login" id="login-link"> Login </a>
-          </div>
-          <div class="form-input">---------- OR ----------</div>
-          <div id="spinner" style="
-            background: #4267b2;
-            border-radius: 5px;
-            color: white;
-            height: 40px;
-            text-align: center;
-            width: 250px;">Loading
-            <div class="fb-login-button form-input" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email" data-onlogin="checkLoginState()"></div>
-          </div>
-          <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
-        </form>
-      </div>
-    </section>
+
     <section id="about" data-section="about">
       <div>
         <h2>About</h2>
         <p>This site is a part of Sparks Foundations Internship tasks.</p>
-        <p>Find this site's source code - <a href="#">Visit Repository</a></p>
+        <p>Find this site's source code - <a href="https://github.com/adityayaduvanshi0001/MySocial/">Visit Repository</a></p>
         <p>Find this site's video demonstration - <a href="#">Visit Video</a></p>
         <div>
           <video src="#"></video>
         </div>
       </div>
     </section>
+
     <section id="contact" data-section="contact">
       <div>
         <h2>Contact</h2>
         <p>This task is submitted by <a href="https://linkedin.com/in/aditya-yaduvanshi/">Aditya Yaduvanshi</a></p>
-        <address>
-          <p><label>E-mail : </label><strong><a href="mailto:adityayaduvanshi0001@gmail.com">adityayaduvanshi0001@gmail.com</a></strong></p>
-          <p><label>Contact No. : </label><strong><a href="tel:+916262948829">+91 6262948829</a></strong></p>
-          <p><label>Github : </label><strong><a href="https://github.com/adityayaduvanshi0001/">adityayaduvanshi0001</a></strong></p>
-          <p><label>Twitter : </label><strong><a href="https://twitter.com/">@adityayaduvanshi0001</a></strong></p>
-        </address>
+          <table>
+            <tr>
+              <td> E-mail </td>
+              <td><strong><a href="mailto:adityayaduvanshi0001@gmail.com">adityayaduvanshi0001@gmail.com</a></strong></td>
+            </tr>
+            <tr>
+              <td> Contact No. </td>
+              <td><strong><a href="tel:+916262948829">+91 6262948829</a></strong></td>
+            </tr>
+            <tr>
+              <td> Github </td>
+              <td><strong><a href="https://github.com/adityayaduvanshi0001/">adityayaduvanshi0001</a></strong></td>
+            </tr>
+            <tr>
+              <td> Twitter </td>
+              <td><strong><a href="https://twitter.com/AdityaY09354475">@AdityaY09354475</a></strong></td>
+            </tr>
+          </table>
       </div>
     </section>
   </main>
+
   <footer>
     <div>Thanks for visiting this site.</div>
   </footer>
+
   <script src="script.js"></script>
+
 </body>
 </html>

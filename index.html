@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-signin-client_id" content="75534178851-p5ueavfdn18bfrg8nkpt3335oct8bsbc.apps.googleusercontent.com">
+  <title>MySocial - Social Network Integration</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Benne&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="images/social-networking-icon.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="home" data-section="home">
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0&appId=1032608233947182&autoLogAppEvents=1" nonce="FwJ5FEil"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <header>
+    <a href="index.html"></a>
+      <div id="brand">
+        <div id="brand-logo"><img src="images/social-networking-icon.png" alt="logo"></div>
+        <div id="brand-name">MySocial</div>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item" id="nav-login">
+          <a class="nav-link" href="#login">Login</a>
+        </li>
+        <li class="nav-item" id="nav-register">
+          <a class="nav-link" href="#register">Register</a>
+        </li>
+        <li class="nav-item" id="nav-logout">
+          <a href="#" class="nav-link" onclick="LogoutUser();">Logout</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="menu">
+      <button id="menu-btn">
+        <span class="menu-bar" id="bar-upper"></span>
+        <span class="menu-bar" id="bar-middle"></span>
+        <span class="menu-bar" id="bar-lower"></span>
+      </button>
+    </div>
+  </header>
+  <main>
+    <section id="intro" data-section="intro">
+      <div>
+        <h1>Sparks Foundations Internship</h1>
+        <p>Task - #3 Social Network Integration</p>
+      </div>
+    </section>
+    <section id="my-profile" data-section="user" style="display:none;">
+      <h2>My Profile</h2>
+      <div id="user-profile">
+        <img src="" alt="Profile-Picture" id="profile-picture">
+        <p id="user-name"></p>
+        <p id="user-email"></p>
+      </div>
+    </section>
+    <section id="login" data-section="login">
+      <h2>Login</h2>
+      <div id="login-form">
+        <form method="GET">
+          <div class="form-input">
+            <input type="email" name="login-email" id="login-email" placeholder="Enter The Email" required>
+          </div>
+          <div class="form-input">
+            <input type="password" name="login-password" id="login-password" placeholder="Enter The Password" required>
+          </div>
+          <div class="form-input" id="login-submit">
+            <input type="submit" value="Login">
+          </div>
+          <div class="form-input">
+            New ? Create an account <a href="#register" id="register-link"> Register </a>
+          </div>
+          <div>---------- OR ----------</div>
+          <!--<div class="login-btn form-input" id="fb-login">
+            <a href="#">Continue with Facebook</a>
+          </div>-->
+          <div id="spinner" style="
+            background: #4267b2;
+            border-radius: 5px;
+            color: white;
+            height: 40px;
+            text-align: center;
+            width: 250px;">Loading
+            <div class="fb-login-button form-input" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email" data-onlogin="checkLoginState()"></div>
+          </div>
+          <!--<div class="login-btn form-input" id="g-login">
+            <a href="#">Continue with Google</a>
+          </div>-->
+          <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
+        </form>
+      </div>
+    </section>
+    <section id="register" data-section="register">
+      <h2>Register</h2>
+      <div id="register-form">
+        <form method="POST" action="#">
+          <div class="form-input">
+            <input type="username" name="username" id="username" placeholder="Enter The Username" required>
+          </div>
+          <div class="form-input">
+            <input type="email" name="email" id="email" placeholder="Enter The Email" required>
+          </div>
+          <div class="form-input">
+            <input type="password" name="password" id="password" placeholder="Enter The Password" required>
+          </div>
+          <div class="form-input">
+            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm The Password" required>
+          </div>
+          <div class="form-input" id="register-submit">
+            <input type="submit" value="Register">
+          </div>
+          <div class="form-input">
+            Already have an account ? <a href="#login" id="login-link"> Login </a>
+          </div>
+          <div class="form-input">---------- OR ----------</div>
+          <div id="spinner" style="
+            background: #4267b2;
+            border-radius: 5px;
+            color: white;
+            height: 40px;
+            text-align: center;
+            width: 250px;">Loading
+            <div class="fb-login-button form-input" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email" data-onlogin="checkLoginState()"></div>
+          </div>
+          <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
+        </form>
+      </div>
+    </section>
+    <section id="about" data-section="about">
+      <div>
+        <h2>About</h2>
+        <p>This site is a part of Sparks Foundations Internship tasks.</p>
+        <p>Find this site's source code - <a href="#">Visit Repository</a></p>
+        <p>Find this site's video demonstration - <a href="#">Visit Video</a></p>
+        <div>
+          <video src="#"></video>
+        </div>
+      </div>
+    </section>
+    <section id="contact" data-section="contact">
+      <div>
+        <h2>Contact</h2>
+        <p>This task is submitted by <a href="https://linkedin.com/in/aditya-yaduvanshi/">Aditya Yaduvanshi</a></p>
+        <address>
+          <p><label>E-mail : </label><strong><a href="mailto:adityayaduvanshi0001@gmail.com">adityayaduvanshi0001@gmail.com</a></strong></p>
+          <p><label>Contact No. : </label><strong><a href="tel:+916262948829">+91 6262948829</a></strong></p>
+          <p><label>Github : </label><strong><a href="https://github.com/adityayaduvanshi0001/">adityayaduvanshi0001</a></strong></p>
+          <p><label>Twitter : </label><strong><a href="https://twitter.com/">@adityayaduvanshi0001</a></strong></p>
+        </address>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div>Thanks for visiting this site.</div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

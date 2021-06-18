@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', ()=> {
   document.querySelector('#menu-btn').addEventListener('click', menu_btn)
-  document.querySelector('#login-form').addEventListener('submit', LoginUser)
-  document.querySelector('#register-form').addEventListener('submit', RegisterUser)
 })
 
 function menu_btn(){
@@ -98,4 +96,15 @@ function signOut() {
   auth2.signOut().then(function () {
     console.log('User signed out.');
   });
+
+  alert('You are successfully logged out!')
+  
+  document.querySelectorAll('section').forEach(section => {
+    if(section.id == 'myprofile'){
+      section.style.display = 'none'
+    }
+    else {
+      section.style.display = 'block'
+    }
+  })
 }

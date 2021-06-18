@@ -64,18 +64,9 @@
     </section>
 
     <section id="social-login">
-      <div>
-        <div id="spinner" style="
-          background: #4267b2;
-          border-radius: 5px;
-          color: white;
-          height: 40px;
-          text-align: center;
-          width: 250px;">Loading
-          <div class="fb-login-button form-input" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email" data-onlogin="checkLoginState"></div>
-        </div>
+        <div class="fb-login-button form-input" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email" data-onlogin="checkLoginState"></div>
         <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
-        <div><a href="#home" onclick="signOut()">Sign Out</a></div>
+        <div><a href="index.html" onclick="signOut()">Sign Out</a></div>
       </div>
     </section>
 

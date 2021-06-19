@@ -56,7 +56,7 @@ function checkLoginState() {
     statusChangeCallback(response);
   });
 }
-/*
+
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
     if(response.status === 'connected'){
@@ -65,17 +65,53 @@ function checkLoginState() {
     else {
       FB.login((response)=>{
         checkLoginState()
-      }, {scope: 'public_profile, email, name, picture'})
+      }, {scope: 'public_profile'})
     }
   });
 }
-*/
 
 function FbLoginSuccess(){
-  FB.api('/me?fields=name,email,picture', function(response){
+  FB.login(function(response){
+    FB.checkLoginState(function(response) {
+      if(response.status === 'connected'){
+        FB.api('/me/permissions', function(response){
+          console.log('permissions' + response)
+          let Permitted = ['true', 'false', 'false', 'false', 'false']
+          if(response.data[1].permission == 'picture'){
+            if(response.data[1].status == 'granted'){
+              Permitted[1] = 'true'
+            }
+          }
+          if(response.data[2].permission == 'name'){
+            if(response.data[2].status == 'granted'){
+              Permitted[2] = 'true'
+            }
+          }
+          if(response.data[3].permission == 'email'){
+            if(response.data[3].status == 'granted'){
+              Permitted[3] = 'true'
+            }
+          }
+          if(response.data[4].permission == 'phone'){
+            if(response.data[4].status == 'granted'){
+              Permitted[4] = 'true'
+            }
+          }
+        })
+        if(Permitted[0] && Permitted[1] && Permitted[2] && Permitted[3] && Permitted[4]){
+          CallFbApi()
+        }
+      }
+    })
+  }, {scope:'public_profile, picture, name, email, phone'})
+}
+
+function CallFbApi(){
+  FB.api('/me?fields=name,email,picture.type(large),phone', function(response){
     console.log("Email : " + response.email)
     console.log("Name : " + response.name)
     console.log("Picture : " + response.picture)
+    console.log("Phone : " + response.phone)
 
     RedirectToProfile(response.picture, response.name, response.email, logOut)
 

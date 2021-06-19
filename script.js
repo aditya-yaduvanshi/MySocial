@@ -72,7 +72,7 @@ function checkLoginState() {
 
 function FbLoginSuccess(){
   FB.login(function(response){
-    FB.checkLoginState(function(response) {
+    FB.getLoginStatus(function(response) {
       if(response.status === 'connected'){
         FB.api('/me/permissions', function(response){
           console.log('permissions' + response)

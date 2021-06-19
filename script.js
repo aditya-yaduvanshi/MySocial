@@ -53,6 +53,12 @@ window.fbAsyncInit = function() {
 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+/*
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
     if(response.status === 'connected'){
       FbLoginSuccess();
     }
@@ -63,6 +69,7 @@ function checkLoginState() {
     }
   });
 }
+*/
 
 function FbLoginSuccess(){
   FB.api('/me?fields=name,email,picture', function(response){

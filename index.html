@@ -13,46 +13,36 @@
 </head>
 <body id="home" data-section="home">
   <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0&appId=1032608233947182&autoLogAppEvents=1" nonce="FwJ5FEil"></script>
+  <script src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0&appId=1032608233947182&autoLogAppEvents=1" nonce="FwJ5FEil" async defer crossorigin="anonymous"></script>
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <header>
-    <a href="index.html"></a>
-      <div id="brand">
-        <div id="brand-logo"><img src="images/social-networking-icon.png" alt="logo"></div>
-        <div id="brand-name">MySocial</div>
-      </div>
-    </a>
     <nav>
-      <ul class="nav-list">
-        <li class="nav-item">
-          <a class="nav-link" href="#home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-        <li class="nav-item" id="nav-login">
-          <a class="nav-link" href="#social-login">Login</a>
-        </li>
-      </ul>
+
+      <div id="brand">
+        <a href="index.html" id="nav-brand">
+          <div id="brand-logo"><img src="images/social-networking-icon.png" alt="logo"></div>
+          <div id="brand-name">MySocial</div>
+        </a>
+      </div>
+
+      <div class="navbar">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-link" href="#social-login" id="nav-login">Login</a>
+      </div>
+
     </nav>
-    <div id="menu">
-      <button id="menu-btn">
-        <span class="menu-bar" id="bar-upper"></span>
-        <span class="menu-bar" id="bar-middle"></span>
-        <span class="menu-bar" id="bar-lower"></span>
-      </button>
-    </div>
-  </header>
-  <main>
+
     <section id="intro" data-section="intro">
       <div>
         <h1>Sparks Foundations Internship</h1>
         <p>Task - #3 Social Network Integration</p>
       </div>
     </section>
+
+  </header>
+  <main>
 
     <section id="my-profile" data-section="user" style="display:none;">
       <h2>My Profile</h2>
@@ -65,10 +55,8 @@
     </section>
 
     <section id="social-login">
-        <div class="fb-login-button form-input" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email" data-onlogin="checkLoginState"></div>
-        <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
-        <div><a href="index.html" onclick="signOut()">Sign Out</a></div>
-      </div>
+      <div class="fb-login-button form-input" data-width="250" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-scope="public_profile, name, email, picture" data-onlogin="checkLoginState"></div>
+      <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
     </section>
 
     <section id="about" data-section="about">

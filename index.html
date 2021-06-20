@@ -53,13 +53,12 @@
 
     </nav>
 
-    <section id="intro">
+    <div id="intro">
       <h1>Sparks Foundations Internship</h1>
       <p>
         Task - #3 Social Network Integration
-        Your device width is : <span id="intro-width"></span>
       </p>
-    </section>
+    </div>
 
   </header>
   <main>
@@ -78,7 +77,7 @@
       <div class="section-wrap">
         <h2>Login With Your Social Profiles</h2>
         <div class="fb-login-button form-input" data-width="250" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false" data-scope="public_profile" data-onlogin="checkLoginState"></div>
-        <div class="g-signin2 form-input" data-onsuccess="onSignIn"></div>
+        <div class="g-signin2 form-input" data-onsuccess="onSignIn" data-width="250" data-height="40" data-longtitle="true" data-theme="dark"></div>
       </div>
     </section>
 
@@ -124,7 +123,8 @@
   </main>
 
   <footer>
-    <section id="footer">Thanks for visiting this site. Have a blissful day!</section>
+    <div>Thanks for visiting this site. Have a blissful day!</div>
+    <div><a href="#home">Back To Top</a></div>
   </footer>
 
   <script src="script.js"></script>

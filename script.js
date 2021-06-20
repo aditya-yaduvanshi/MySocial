@@ -54,12 +54,6 @@ window.fbAsyncInit = function() {
 
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-
-function checkLoginState() {
-  FB.getLoginStatus(function(response) {
     if(response.status === 'connected'){
       FbLoginSuccess();
     }
@@ -75,9 +69,9 @@ function FbLoginSuccess(){
   FB.login(function(response){
     FB.getLoginStatus(function(response) {
       if(response.status === 'connected'){
+        let Permitted = ['true', 'false', 'false', 'false', 'false']
         FB.api('/me/permissions', function(response){
           console.log('permissions' + response)
-          let Permitted = ['true', 'false', 'false', 'false', 'false']
           if(response.data[1].permission == 'picture'){
             if(response.data[1].status == 'granted'){
               Permitted[1] = 'true'
@@ -124,19 +118,6 @@ function logOut(){
   console.log('User signed out.');
   RemoveProfile()
 }
-
-/* 
-Response by getLoginStatus
-{
-    status: 'connected',
-    authResponse: {
-        accessToken: '...',
-        expiresIn:'...',
-        signedRequest:'...',
-        userID:'...'
-    }
-}
-*/
 
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();

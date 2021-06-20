@@ -57,6 +57,9 @@ function checkLoginState() {
     if(response.status === 'connected'){
       fblogin();
     }
+    else {
+      fbloginfailed();
+    }
   });
 }
 
@@ -123,7 +126,7 @@ function RemoveProfile(){
       section.style.display = 'none'
     }
     else {
-      section.style.display = 'block'
+      section.style.display = 'flex'
     }
   })
 }

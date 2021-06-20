@@ -79,45 +79,24 @@ function fblogin(){
 }
 
 function CallFbApi(){
-  FB.api('/me?fields=name', function(response){
-    console.log('response: ' + response)
-    console.log("Email : " + response.email)
-    console.log("Name : " + response.name)
-    console.log("Picture : " + response.picture)
-    console.log("Phone : " + response.phone)
-    console.log('another api call')
-
-    FB.api('/me/user?fields=email', function(res){
-      console.log('res : ' + res)
-      console.log('res email : ' + res.email)
-    })
-
-    //let userid = (response.email) ? response.email : response.phone
-    //RedirectToProfile(response.picture, response.name, userid, logOut)
-
+  FB.api('/me?fields=name,email,picture.type(large)', function(response){
+    RedirectToProfile(response.picture.data.url, response.name, response.email, logOut)
   })
 }
 
 function logOut(){
   FB.logout()
-  console.log('User signed out.');
   RemoveProfile()
 }
 
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
   RedirectToProfile(profile.getImageUrl(),profile.getName(),profile.getEmail(),signOut);
 }
 
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
-    console.log('User signed out.');
-  });
+  auth2.signOut()
   RemoveProfile()
 }
 

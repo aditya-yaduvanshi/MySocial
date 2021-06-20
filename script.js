@@ -75,19 +75,25 @@ function fblogin(){
     else {
       fbloginfailed();
     }
-  },{scope: 'name'})
+  },{scope: 'public_profile,email'})
 }
 
 function CallFbApi(){
   FB.api('/me?fields=name', function(response){
-    console.log('response: ' + response.json())
+    console.log('response: ' + response)
     console.log("Email : " + response.email)
     console.log("Name : " + response.name)
     console.log("Picture : " + response.picture)
     console.log("Phone : " + response.phone)
+    console.log('another api call')
 
-    let userid = (response.email) ? response.email : response.phone
-    RedirectToProfile(response.picture, response.name, userid, logOut)
+    FB.api('/me/user?fields=email', function(res){
+      console.log('res : ' + res)
+      console.log('res email : ' + res.email)
+    })
+
+    //let userid = (response.email) ? response.email : response.phone
+    //RedirectToProfile(response.picture, response.name, userid, logOut)
 
   })
 }

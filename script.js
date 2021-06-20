@@ -72,12 +72,12 @@ function fblogin(){
     else {
       fbloginfailed();
     }
-  },{scope: 'email'})
+  },{scope: 'name'})
 }
 
 function CallFbApi(){
-  FB.api('/me?fields=name,email,picture.type(large),phone', function(response){
-    console.log('response: ' + response)
+  FB.api('/me?fields=name', function(response){
+    console.log('response: ' + response.json())
     console.log("Email : " + response.email)
     console.log("Name : " + response.name)
     console.log("Picture : " + response.picture)

@@ -1,14 +1,18 @@
+const navbar = document.querySelector('.navbar')
+
 document.addEventListener('DOMContentLoaded', ()=> {
   document.querySelector('#menu-btn').addEventListener('click', menu_btn)
+  window.matchMedia("(min-width: 720px)") = ()=>{
+    navbar.style.display = 'flex'
+  }
 })
 
 function menu_btn(){
-  const nav = document.querySelector('nav')
-  if(nav.style.display === 'none'){
-    nav.style.display = 'flex'
+  if(navbar.style.display == 'none'){
+    navbar.style.display = 'flex'
   }
   else {
-    nav.style.display = 'none'
+    navbar.style.display = 'none'
   }
 }
 

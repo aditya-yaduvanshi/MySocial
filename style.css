@@ -160,10 +160,13 @@ h1 {
   #imp-link-sm {
     display: flex;
     padding: 12px;
+    align-items: center;
+    justify-content: center;
   }
   #imp-link-sm a {
     font-size: large;
-    padding: 5px 10px;
+    padding: 5px;
+    margin: auto;
   }
 }
 @media screen and (max-width:719px){

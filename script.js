@@ -96,17 +96,14 @@ function onSignIn(googleUser) {
 }
 
 function GithubLogin(){
-  fetch('https://github.com/login/oauth/authorize', {
+  console.log('request sent')
+  fetch('https://github.com/login/oauth/authorize/client_id=debc2ffe976184cc1677&redirect_uri=github.io/adityayaduvanshi0001/MySocial')/*, {
     method: 'GET',
     body: JSON.stringify({
       client_id: 'debc2ffe976184cc1677',
       redirect_uri: 'github.io/adityayaduvanshi0001/MySocial',
     })
-  })
-  .then(response => response.json())
-  .then(result => {
-    console.log(result)
-  })
+  })*/
 }
 
 function signOut() {

@@ -196,8 +196,26 @@ h1 {
   font-size: 3vw;
   margin-bottom: 10vh;
 }
-
-/*  */
+#github-login {
+  color: white; 
+  background: rgba(0,0,0,0.9);
+  height: 100%; 
+  display: flex;
+  border-radius: 3px; 
+  justify-content: center; 
+  position: relative; 
+  left: 0; 
+  top: 0; 
+  width: 100%; 
+  align-items: center; 
+  cursor: pointer;
+}
+#github-login:hover {
+  background: rgba(0,0,0,0.8);
+}
+#github-login:active {
+  background: rgba(0,0,0,0.9);
+}
 
 /* Responsive Media Queries */
 @media screen and (min-width:320px){

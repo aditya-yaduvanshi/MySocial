@@ -2,6 +2,7 @@ const navbar = document.querySelector('.navbar')
 
 document.addEventListener('DOMContentLoaded', ()=> {
   document.querySelector('#menu-btn').addEventListener('click', menu_btn)
+  document.querySelector('#github-login').addEventListener('click', GithubLogin)
 })
 
 function menu_btn(){
@@ -92,6 +93,20 @@ function logOut(){
 function onSignIn(googleUser) {
   var profile = googleUser.getBasicProfile();
   RedirectToProfile(profile.getImageUrl(),profile.getName(),profile.getEmail(),signOut);
+}
+
+function GithubLogin(){
+  fetch('https://github.com/login/oauth/authorize', {
+    method: 'GET',
+    body: JSON.stringify({
+      client_id: 'debc2ffe976184cc1677',
+      redirect_uri: 'github.io/adityayaduvanshi0001/MySocial',
+    })
+  })
+  .then(response => response.json())
+  .then(result => {
+    console.log(result)
+  })
 }
 
 function signOut() {

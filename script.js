@@ -104,6 +104,7 @@ function GithubLogin(){
       redirect_uri: 'github.io/adityayaduvanshi0001/MySocial',
     })
   })*/
+  .then(response => console.log(response))
 }
 
 function signOut() {
